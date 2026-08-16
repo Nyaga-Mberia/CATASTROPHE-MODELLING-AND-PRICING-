@@ -2,7 +2,7 @@
 
 An end-to-end spatial data science framework leveraging gradient-boosted decision trees (LightGBM) and Earth Observation (EO) data to model high-resolution flood susceptibility across the rapidly urbanizing Nairobi-Kiambu corridor.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Nyaga-Mberia/CATASTROPHE-MODELLING-AND-PRICING-/blob/main/CM%26P%20.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ff-A4MtCaXCvAosUZQZXcJNh7DzwMxKJ?usp=sharing)
 
 ---
 
