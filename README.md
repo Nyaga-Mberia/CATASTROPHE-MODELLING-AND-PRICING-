@@ -20,34 +20,47 @@ This project bridges the gap between point-based statistical evaluation and full
 
 ## System & Model Architecture
 
-[ Raw Spatial Inputs ] --> [ Google Earth Engine ] --> [ Feature Extraction ]
-  * SRTM DEM (30m)           * Spatial Masking           * Elevation, Slope, TWI
-  * Sentinel-2 / Landsat     * Index Calculation         * NDVI, NDBI, NDWI
-  * CHIRPS Rainfall          * Multi-Sensor Composite    * Rainfall & River Dist.
-                                                                |
-                                                                v
-[ Interactive WebGIS ] <-- [ Continuous GeoTIFF ] <-- [ LightGBM Inference ]
-  * HTML Map / App           * 30m Pixel Resolution      * ~2.7M Grid Cells
-  * Asset Underwriting       * Spatial Probabilities     * R2 = 0.9289
+* **1. Raw Spatial Inputs**
+  * SRTM DEM (30m Elevation)
+  * Sentinel-2 / Landsat Optical Imagery
+  * CHIRPS Daily Rainfall Metrics
+
+* **2. Geospatial Feature Extraction**
+  * Hydro-Geomorphology: Slope, Aspect, Topographic Wetness Index (TWI)
+  * Surface Covers: NDVI (Vegetation), NDBI (Built-up), NDWI (Water)
+  * Climatic & Proximity: Seasonal Rainfall, Distance to River
+
+* **3. LightGBM Gradient Boosting**
+  * Input Data: Sampled spatial training matrix
+  * Feature Interaction: Learns non-linear spatial dependencies
+  * Performance: R2 = 0.9289 across validation points
+
+* **4. Wall-to-Wall Raster Inference**
+  * Spatial Coverage: ~2.7 Million Grid Cells (30m Resolution)
+  * Continuous Export: Georeferenced GeoTIFF Risk Surface
+
+* **5. WebGIS & Commercial Delivery**
+  * Interactive Map: Browser-based visualization
+  * Use Cases: Site-level asset pricing & exposure scoring
 
 ---
 
 ## Repository Structure
 
-nairobi-kiambu-flood-risk/
-|-- data/
-|   |-- raw/                 # Primary EO rasters and boundary shapefiles
-|   +-- processed/           # Sampled spatial grid points (.csv / .parquet)
-|-- notebooks/
-|   +-- 01_flood_risk_model.ipynb   # Earth Engine feature ingestion, LightGBM training, & inference
-|-- outputs/
-|   |-- maps/                # Exported 30m GeoTIFF flood probability rasters
-|   +-- webgis/              # Standalone interactive HTML map files
-|-- src/
-|   |-- processing.py        # Feature engineering and spatial normalization utilities
-|   +-- evaluation.py        # Model validation metrics and performance plots
-|-- README.md                # Project documentation and Data Dictionary
-+-- requirements.txt         # Python package dependencies
+* **nairobi-kiambu-flood-risk/**
+  * **data/**
+    * **raw/** (Primary EO rasters and boundary shapefiles)
+    * **processed/** (Sampled spatial grid points in CSV/Parquet format)
+  * **notebooks/**
+    * **01_flood_risk_model.ipynb** (Earth Engine feature ingestion, LightGBM training, and inference)
+  * **outputs/**
+    * **maps/** (Exported 30m GeoTIFF flood probability rasters)
+    * **webgis/** (Standalone interactive HTML map files)
+  * **src/**
+    * **processing.py** (Feature engineering and spatial normalization utilities)
+    * **evaluation.py** (Model validation metrics and performance plots)
+  * **README.md** (Project documentation and Data Dictionary)
+  * **requirements.txt** (Python package dependencies)
 
 ---
 
