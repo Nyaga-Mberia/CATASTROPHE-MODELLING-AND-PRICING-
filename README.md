@@ -116,7 +116,7 @@ This project bridges the gap between point-based statistical evaluation and full
 ## Setup & Execution
 
 1. Clone Repository:
-   git clone https://github.com/your-username/nairobi-kiambu-flood-risk.git
+   git clone git clone https://github.com/Nyaga-Mberia/CATASTROPHE-MODELLING-AND-PRICING-.git
    cd nairobi-kiambu-flood-risk
 
 2. Install Required Packages:
